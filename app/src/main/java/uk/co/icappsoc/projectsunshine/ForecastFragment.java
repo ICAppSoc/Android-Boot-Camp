@@ -26,8 +26,6 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 /**
  * A placeholder fragment containing a simple view.
@@ -53,7 +51,7 @@ public class ForecastFragment extends Fragment {
     public boolean onOptionsItemSelected(MenuItem item){
         if(item.getItemId() == R.id.action_refresh){
             // If it's the refresh menu button, fetch and display our weather data!
-            new FetchWeatherTask().execute();
+            updateWeather();
             return true;
         }
         return super.onOptionsItemSelected(item);
@@ -62,20 +60,7 @@ public class ForecastFragment extends Fragment {
     // Called by the system when our Fragment is first created,
     // here we set up the UI for the first time.
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-
-        // Create some dummy data for the ListView.  Here's a sample weekly forecast
-        String[] data = {
-                "Mon 6/23 - Sunny - 31/17",
-                "Tue 6/24 - Foggy - 21/8",
-                "Wed 6/25 - Cloudy - 22/17",
-                "Thurs 6/26 - Rainy - 18/11",
-                "Fri 6/27 - Foggy - 21/10",
-                "Sat 6/28 - TRAPPED IN WEATHERSTATION - 23/18",
-                "Sun 6/29 - Sunny - 20/7"
-        };
-        List<String> weekForecast = new ArrayList<>(Arrays.asList(data));
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         // Now that we have some dummy forecast data, create an ArrayAdapter.
         // The ArrayAdapter will take data from a source (like our dummy forecast) and
@@ -85,7 +70,7 @@ public class ForecastFragment extends Fragment {
                         getActivity(), // The current context (this activity)
                         R.layout.list_item_forecast, // The name of the layout ID.
                         R.id.list_item_forecast_textview, // The ID of the textview to populate.
-                        weekForecast);
+                        new ArrayList<String>());
 
         View rootView = inflater.inflate(
                 R.layout.fragment_main, container, false);
@@ -96,6 +81,18 @@ public class ForecastFragment extends Fragment {
         listView.setAdapter(forecastAdapter);
 
         return rootView;
+    }
+
+    /** Starts a background worker to fetch the latest weather asynchronously. */
+    private void updateWeather(){
+        FetchWeatherTask weatherTask = new FetchWeatherTask();
+        weatherTask.execute();
+    }
+
+    @Override
+    public void onStart(){
+        super.onStart();
+        updateWeather();
     }
 
     /**
