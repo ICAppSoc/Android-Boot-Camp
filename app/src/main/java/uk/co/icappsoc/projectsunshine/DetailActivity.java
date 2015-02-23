@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -53,7 +54,10 @@ public class DetailActivity extends ActionBarActivity {
      */
     public static class DetailFragment extends Fragment {
 
-        public DetailFragment() { }
+        private String forecastStr;
+        public DetailFragment() {
+            setHasOptionsMenu(true);
+        }
 
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -62,11 +66,34 @@ public class DetailActivity extends ActionBarActivity {
 
             Intent intent = getActivity().getIntent();
             if(null != intent && intent.hasExtra(Intent.EXTRA_TEXT)){
-                String forecastStr = intent.getStringExtra(Intent.EXTRA_TEXT);
+                forecastStr = intent.getStringExtra(Intent.EXTRA_TEXT);
                 weatherDetail.setText(forecastStr);
             }
 
             return rootView;
+        }
+
+        @Override
+        public void onCreateOptionsMenu(Menu menu, MenuInflater inflater){
+            // Inflate the menu; this adds items to the app bar if it is present
+            inflater.inflate(R.menu.detail_fragment, menu);
+        }
+
+        @Override
+        public boolean onOptionsItemSelected(MenuItem item){
+            if(item.getItemId() == R.id.action_share){
+                // Share our forecast to brag to the world about your local weather!
+                startActivity(createShareForecastIntent());
+                return true;
+            }
+            return super.onOptionsItemSelected(item);
+        }
+
+        private Intent createShareForecastIntent(){
+            Intent shareIntent = new Intent(Intent.ACTION_SEND);
+            shareIntent.setType("text/plain");
+            shareIntent.putExtra(Intent.EXTRA_TEXT, forecastStr + " #SunshineApp #ICAppSoc");
+            return shareIntent;
         }
     }
 }
