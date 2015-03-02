@@ -1,8 +1,10 @@
 package uk.co.icappsoc.projectsunshine;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.text.format.Time;
 import android.util.Log;
@@ -96,8 +98,10 @@ public class ForecastFragment extends Fragment {
 
     /** Starts a background worker to fetch the latest weather asynchronously. */
     private void updateWeather(){
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
+        String location = prefs.getString("location", "London");
         FetchWeatherTask weatherTask = new FetchWeatherTask();
-        weatherTask.execute();
+        weatherTask.execute(location);
     }
 
     @Override
@@ -110,12 +114,14 @@ public class ForecastFragment extends Fragment {
      * Fetches weather data from OpenWeatherMap in a background thread.
      * Upon completion, updates the forecastAdapter with the parsed weather data.
      */
-    public class FetchWeatherTask extends AsyncTask<Void, Void, String[]>{
+    public class FetchWeatherTask extends AsyncTask<String, Void, String[]>{
         private final String LOG_TAG = FetchWeatherTask.class.getSimpleName();
 
         // Note that this method runs on a background thread!
         @Override
-        protected String[] doInBackground(Void... params) {
+        protected String[] doInBackground(String... params) {
+            if(params.length < 1) throw new IllegalArgumentException("Needs at least one paramters");
+
             // These two need to be declared outside the try/catch
             // so that they can be closed in the finally block.
             HttpURLConnection urlConnection = null;
@@ -128,7 +134,8 @@ public class ForecastFragment extends Fragment {
                 // Construct the URL for the OpenWeatherMap query
                 // Possible parameters are available at OWM's forecast API page, at
                 // http://openweathermap.org/API#forecast
-                URL url = new URL("http://api.openweathermap.org/data/2.5/forecast/daily?q=London&mode=json&units=metric&cnt=7");
+                URL url = new URL("http://api.openweathermap.org/data/2.5/forecast/daily?q="
+                        + params[0] + "&mode=json&units=metric&cnt=7");
 
                 // Create the request to OpenWeatherMap, and open the connection
                 urlConnection = (HttpURLConnection) url.openConnection();
