@@ -99,9 +99,11 @@ public class ForecastFragment extends Fragment {
     /** Starts a background worker to fetch the latest weather asynchronously. */
     private void updateWeather(){
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
-        String location = prefs.getString("location", "London");
+        // Retrieve user's location preference, or use "London" by default
+        String location = prefs.getString(getString(R.string.pref_location_key), "London");
+
         FetchWeatherTask weatherTask = new FetchWeatherTask();
-        weatherTask.execute(location);
+        weatherTask.execute(location); // Note we pass in the location as a parameter!
     }
 
     @Override
@@ -120,7 +122,10 @@ public class ForecastFragment extends Fragment {
         // Note that this method runs on a background thread!
         @Override
         protected String[] doInBackground(String... params) {
-            if(params.length < 1) throw new IllegalArgumentException("Needs at least one paramters");
+            if(params.length < 1)
+                throw new IllegalArgumentException("Needs at least one parameter, expecting location.");
+            // The user is asking for the weather at a location passed in as parameter to AsyncTask#execute(..)
+            String location = params[0];
 
             // These two need to be declared outside the try/catch
             // so that they can be closed in the finally block.
@@ -135,7 +140,7 @@ public class ForecastFragment extends Fragment {
                 // Possible parameters are available at OWM's forecast API page, at
                 // http://openweathermap.org/API#forecast
                 URL url = new URL("http://api.openweathermap.org/data/2.5/forecast/daily?q="
-                        + params[0] + "&mode=json&units=metric&cnt=7");
+                        + location + "&mode=json&units=metric&cnt=7");
 
                 // Create the request to OpenWeatherMap, and open the connection
                 urlConnection = (HttpURLConnection) url.openConnection();

@@ -6,4 +6,5 @@
     <string name="action_share">Share</string>
     <string name="title_activity_detail">DetailActivity</string>
     <string name="title_activity_settings">SettingsActivity</string>
+    <string name="pref_location_key">location</string>
 </resources>
