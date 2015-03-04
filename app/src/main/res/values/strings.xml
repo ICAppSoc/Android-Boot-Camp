@@ -6,5 +6,15 @@
     <string name="action_share">Share</string>
     <string name="title_activity_detail">DetailActivity</string>
     <string name="title_activity_settings">SettingsActivity</string>
+
+    <!-- Preferences -->
     <string name="pref_location_key">location</string>
+    <string name="pref_units_key">units</string>
+
+    <string name="pref_units_metric">Metric</string>
+    <string name="pref_units_imperial">Imperial</string>
+    <string-array name="pref_units_values">
+        <item>@string/pref_units_metric</item>
+        <item>@string/pref_units_imperial</item>
+    </string-array>
 </resources>
