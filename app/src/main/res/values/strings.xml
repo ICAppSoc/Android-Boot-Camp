@@ -9,6 +9,9 @@
 
     <!-- Preferences -->
     <string name="pref_location_key">location</string>
+
+    <string name="pref_location_default">London</string>
+
     <string name="pref_units_key">units</string>
 
     <string name="pref_units_metric">Metric</string>
