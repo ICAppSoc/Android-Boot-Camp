@@ -6,26 +6,29 @@
     android:gravity="center_vertical"
     android:minHeight="?android:attr/listPreferredItemHeight"
     android:orientation="horizontal"
-    android:padding="16dp">
+    android:paddingLeft="48dp"
+    android:paddingTop="16dp"
+    android:paddingRight="16dp"
+    android:paddingBottom="16dp">
 
     <LinearLayout
         android:layout_height="wrap_content"
         android:layout_width="0dp"
         android:layout_weight="1"
         android:orientation="vertical"
-        android:gravity="center_horizontal">
+        android:gravity="left">
 
-        <TextView
+        <TextView style="@style/TextAppearance.AppCompat.Subhead"
             android:id="@+id/list_item_date_textview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
-        <TextView
+        <TextView style="@style/TextAppearance.AppCompat.Display3"
             android:id="@+id/list_item_high_textview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
-        <TextView
+        <TextView style="@style/TextAppearance.AppCompat.Display1"
             android:id="@+id/list_item_low_textview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
@@ -40,10 +43,10 @@
 
         <ImageView
             android:id="@+id/list_item_icon"
-            android:layout_width="128dp"
-            android:layout_height="128dp"/>
+            android:layout_width="100dp"
+            android:layout_height="100dp"/>
 
-        <TextView
+        <TextView style="@style/TextAppearance.AppCompat.Title"
             android:id="@+id/list_item_forecast_textview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
