@@ -1,4 +1,14 @@
-<resources>
+<resources xmlns:xliff="http://schemas.android.com/apk/res-auto">
+
+    <!-- Date label when displaying today's weather forecast [CHAR LIMIT=20] -->
+    <string name="today">Today</string>
+
+    <!-- Date label when displaying tomorrow's weather forecast [CHAR LIMIT=20] -->
+    <string name="tomorrow">Tomorrow</string>
+
+    <!-- Date format for displaying day of week and date (i.e. Mon Jun 1) [CHAR LIMIT=20] -->
+    <string name="format_full_friendly_date"><xliff:g id="day">%1$s</xliff:g>, <xliff:g id="date">%2$s</xliff:g></string>
+
     <string name="app_name">Project Sunshine</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
