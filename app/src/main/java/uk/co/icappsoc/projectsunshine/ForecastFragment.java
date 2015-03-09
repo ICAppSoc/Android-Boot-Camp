@@ -122,6 +122,11 @@ public class ForecastFragment extends Fragment implements LoaderManager.LoaderCa
         super.onActivityCreated(savedInstanceState);
     }
 
+    public void onLocationChanged(){
+        updateWeather();
+        getLoaderManager().restartLoader(FORECAST_LOADER, null, this);
+    }
+
     /** Starts a background worker to fetch the latest weather asynchronously. */
     private void updateWeather(){
         FetchWeatherTask weatherTask = new FetchWeatherTask(getActivity());
