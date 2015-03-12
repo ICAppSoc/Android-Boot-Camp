@@ -9,6 +9,7 @@ View walkthrough presentations:
 2. [Session Two 16/02/2015][session-two-pres]
 3. [Session Three 23/02/2015][session-three-pres]
 4. [Session Four 02/03/2015][session-four-pres]
+5. [Session Five 09/03/2015][session-five-pres]
 
 [udacity-course]: https://www.udacity.com/course/ud853
 [icappsoc-home]: http://www.icappsoc.co.uk/
@@ -16,3 +17,4 @@ View walkthrough presentations:
 [session-two-pres]: https://docs.google.com/presentation/d/1173W9AhzKrOX0dNnBxR2toxLnwRUVtrfIlnkDgdirc8/edit?usp=sharing
 [session-three-pres]: https://docs.google.com/presentation/d/10jNiZuMKi62coB9PSn5BjkRUpPzXRrWsKSYnZYrtVIY/edit?usp=sharing
 [session-four-pres]: https://docs.google.com/presentation/d/1W3KnNeXr9PGbns8hMbl8ZYMcnWIQco3Tvgmxe2NuQP4/edit?usp=sharing
+[session-five-pres]: https://docs.google.com/presentation/d/1kpGg0ZdOWZidskSUXUh2gkL6KuUZklLzEefn_2ul2Io/edit?usp=sharing
