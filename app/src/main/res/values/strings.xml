@@ -45,4 +45,8 @@
         <item>@string/pref_units_metric</item>
         <item>@string/pref_units_imperial</item>
     </string-array>
+
+    <!-- SyncAdapter related -->
+    <string name="sync_account_type">projectsunshine.icappsoc.co.uk</string>
+    <string name="content_authority">uk.co.icappsoc.projectsunshine</string>
 </resources>
