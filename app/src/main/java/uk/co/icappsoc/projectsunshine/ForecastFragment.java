@@ -18,6 +18,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import uk.co.icappsoc.projectsunshine.data.WeatherContract;
+import uk.co.icappsoc.projectsunshine.service.SunshineService;
 
 /**
  * A view containing our list of weather forecasts.
@@ -129,9 +130,9 @@ public class ForecastFragment extends Fragment implements LoaderManager.LoaderCa
 
     /** Starts a background worker to fetch the latest weather asynchronously. */
     private void updateWeather(){
-        FetchWeatherTask weatherTask = new FetchWeatherTask(getActivity());
-        String location = Utility.getPreferredLocation(getActivity());
-        weatherTask.execute(location); // Note we pass in the location as a parameter!
+        Intent intent = new Intent(getActivity(), SunshineService.class);
+        intent.putExtra(SunshineService.LOCATION_QUERY_EXTRA, Utility.getPreferredLocation(getActivity()));
+        getActivity().startService(intent);
     }
 
     @Override
@@ -141,7 +142,7 @@ public class ForecastFragment extends Fragment implements LoaderManager.LoaderCa
     }
 
     @Override
-    public Loader onCreateLoader(int id, Bundle args) {
+    public Loader<Cursor> onCreateLoader(int id, Bundle args) {
         String locationSetting = Utility.getPreferredLocation(getActivity());
 
         // Sort order:  Ascending, by date.

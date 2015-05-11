@@ -37,6 +37,7 @@
         <provider
             android:authorities="uk.co.icappsoc.projectsunshine"
             android:name=".data.WeatherProvider" />
+        <service android:name=".service.SunshineService" />
     </application>
 
 </manifest>
