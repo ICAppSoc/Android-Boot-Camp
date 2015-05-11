@@ -6,6 +6,8 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import uk.co.icappsoc.projectsunshine.sync.SunshineSyncAdapter;
+
 
 public class MainActivity extends ActionBarActivity {
 
@@ -25,6 +27,8 @@ public class MainActivity extends ActionBarActivity {
                     .add(R.id.container, new ForecastFragment(), FORECASTFRAGMENT_TAG)
                     .commit();
         }
+
+        SunshineSyncAdapter.initializeSyncAdapter(this);
     }
 
     @Override
