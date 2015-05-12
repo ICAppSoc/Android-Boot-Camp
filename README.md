@@ -1,7 +1,8 @@
 # Android Boot Camp
 Building a weather forecast app with [Imperial College App Society][icappsoc-home]. Based on Udacity course [Developing Android Apps][udacity-course] by Google.
 
-The source code you see here covers the content of the first four sessions.
+The source code you see here covers the content of all six sessions.
+(See individual branches for content covered in each session.)
 
 View walkthrough presentations:
 
@@ -10,6 +11,7 @@ View walkthrough presentations:
 3. [Session Three 23/02/2015][session-three-pres]
 4. [Session Four 02/03/2015][session-four-pres]
 5. [Session Five 09/03/2015][session-five-pres]
+6. [Session Six 16/03/2015][session-six-pres]
 
 [udacity-course]: https://www.udacity.com/course/ud853
 [icappsoc-home]: http://www.icappsoc.co.uk/
@@ -18,3 +20,4 @@ View walkthrough presentations:
 [session-three-pres]: https://docs.google.com/presentation/d/10jNiZuMKi62coB9PSn5BjkRUpPzXRrWsKSYnZYrtVIY/edit?usp=sharing
 [session-four-pres]: https://docs.google.com/presentation/d/1W3KnNeXr9PGbns8hMbl8ZYMcnWIQco3Tvgmxe2NuQP4/edit?usp=sharing
 [session-five-pres]: https://docs.google.com/presentation/d/1kpGg0ZdOWZidskSUXUh2gkL6KuUZklLzEefn_2ul2Io/edit?usp=sharing
+[session-six-pres]: https://docs.google.com/presentation/d/1hpMLKG8PnLJSD6HWCOGN1Vx7-46FEj61Nk1q8mFzizk/edit?usp=sharing
