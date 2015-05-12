@@ -1,5 +1,5 @@
 # Android Boot Camp
-Building a weather forecast app with [Imperial College App Society][icappsoc-home]. Based on Udacity course [Developing Android Apps][udacity-course] by Google.
+Building a weather forecast app with [Imperial College App Society][icappsoc-home]. Based on the Udacity course [Developing Android Apps][udacity-course] by Google.
 
 The source code you see here covers the content of all six sessions.
 (See individual branches for content covered in each session.)
